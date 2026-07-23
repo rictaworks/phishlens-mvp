@@ -1,0 +1,15 @@
+.agents/
+.claude/
+.env
+AGENTS.md
+CLIENT/
+DEBUG/
+DELETE/
+DOCS/
+ENV/
+SPEC/
+TASKS/
+WORK/
+node_modules/
+package.json
+package-lock.json
