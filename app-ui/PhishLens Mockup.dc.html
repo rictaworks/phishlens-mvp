@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/veliora-business-a4b5e515-69ae-495d-a204-f68ed492403b/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/veliora-business-a4b5e515-69ae-495d-a204-f68ed492403b/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/veliora-business-a4b5e515-69ae-495d-a204-f68ed492403b/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/veliora-business-a4b5e515-69ae-495d-a204-f68ed492403b/styles.css">
+  <script src="_ds/veliora-business-a4b5e515-69ae-495d-a204-f68ed492403b/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { margin: 0; background: var(--surface-subtle); }
+    @keyframes phishlens-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    a { color: var(--color-ink-900); }
+    a:hover { color: var(--color-ink-700); }
+  </style>
+</helmet>
+
+<div style="font-family: var(--font-body); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; background: var(--surface-invert); color: #fff;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div style="width: 30px; height: 30px; border: 2px solid #fff; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-shield-halved"></i></div>
+      <div style="font-family: var(--font-display); font-size: 18px; letter-spacing: 0.02em;">PhishLens <span style="opacity:.55; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.04em;">MVP モック</span></div>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button onClick="{{ setTab_extension }}" style="background: {{ extTabBg }}; color: #fff; border: 1px solid rgba(255,255,255,.4); padding: 8px 18px; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.04em; cursor: pointer;">拡張機能(メール判定)</button>
+      <button onClick="{{ setTab_dashboard }}" style="background: {{ dashTabBg }}; color: #fff; border: 1px solid rgba(255,255,255,.4); padding: 8px 18px; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.04em; cursor: pointer;">Webダッシュボード</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ isExtension }}" hint-placeholder-val="{{ true }}">
+  <div style="flex: 1; display: flex; justify-content: center; padding: 32px;">
+    <div style="width: 100%; max-width: 1180px; border: 1px solid var(--border-default); background: var(--surface-page); box-shadow: 0 1px 6px rgba(0,0,0,.07);">
+
+      <div style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--border-default); background: var(--surface-subtle);">
+        <span style="width: 11px; height: 11px; border-radius: 50%; background: var(--color-ink-200);"></span>
+        <span style="width: 11px; height: 11px; border-radius: 50%; background: var(--color-ink-200);"></span>
+        <span style="width: 11px; height: 11px; border-radius: 50%; background: var(--color-ink-200);"></span>
+        <div style="margin-left: 14px; background: #fff; border: 1px solid var(--border-default); padding: 4px 14px; font-size: 12px; color: var(--text-tertiary); flex: 1;">mail.google.com/mail/u/0/#inbox</div>
+      </div>
+
+      <div style="display: flex; min-height: 560px;">
+        <div style="width: 220px; flex-shrink: 0; border-right: 1px solid var(--border-default);">
+          <div style="padding: 16px 18px; font-family: var(--font-display); font-size: 20px; color: var(--text-primary);">受信トレイ</div>
+          <sc-for list="{{ mailList }}" as="mail" hint-placeholder-count="4">
+            <div style="padding: 14px 18px; border-top: 1px solid var(--border-default); background: {{ mail.bg }}; cursor: pointer;">
+              <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-primary); font-weight: 600;">
+                <span>{{ mail.from }}</span>
+                <span style="color: var(--text-tertiary); font-weight: 400;">{{ mail.time }}</span>
+              </div>
+              <div style="font-size: 13px; color: var(--text-primary); margin-top: 4px;">{{ mail.subject }}</div>
+              <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ mail.snippet }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="flex: 1; padding: 22px 24px; display: flex; gap: 20px; min-width: 0;">
+          <div style="flex: 1 1 320px; min-width: 220px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-default); padding-bottom: 18px; margin-bottom: 20px; gap: 16px;">
+              <div style="flex: 1 1 auto; min-width: 0;">
+                <div style="font-family: var(--font-display); font-size: 21px; color: var(--text-primary); margin-bottom: 8px;">【重要】アカウントの確認が必要です</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">From: security-support@amaz0n-verify.com</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">To: user@gmail.com</div>
+              </div>
+              <button onClick="{{ runJudgement }}" style="background: var(--color-ink-900); color: #fff; border: 2px solid var(--color-ink-900); padding: 10px 22px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; display: flex; align-items: center; gap: 8px; white-space: nowrap; flex-shrink: 0;">
+                <i class="fa-solid {{ judgeBtnIcon }}"></i> {{ judgeBtnLabel }}
+              </button>
+            </div>
+
+            <div style="font-size: 14px; line-height: 1.75; color: var(--text-primary);">
+              <p style="margin-bottom: 14px;">お客様のアカウントで不審なログインが検出されました。至急、下記リンクよりアカウント情報の確認と再認証を行ってください。24時間以内に確認が取れない場合、アカウントを一時的に制限させていただきます。</p>
+              <p><a href="#" style="text-decoration: underline;">アカウントを確認する →</a></p>
+            </div>
+          </div>
+
+          <sc-if value="{{ judged }}" hint-placeholder-val="{{ false }}">
+          <div style="flex: 0 0 260px; width: 260px; height: fit-content; background: #fff; border: 1px solid var(--border-default); box-shadow: 0 4px 20px rgba(0,0,0,.12); animation: phishlens-fade-in 0.2s ease;">
+            <div style="padding: 18px 20px; border-bottom: 1px solid var(--border-default); display: flex; align-items: center; justify-content: space-between; gap: 10px; background: {{ cat.headerBg }}; color: {{ cat.headerColor }};">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid {{ cat.icon }}" style="font-size: 18px;"></i>
+                <div style="font-family: var(--font-display); font-size: 17px;">判定結果: {{ cat.label }}</div>
+              </div>
+              <button onClick="{{ closeJudgement }}" style="background: transparent; border: none; color: inherit; cursor: pointer; font-size: 16px; opacity: 0.7; padding: 0;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div style="padding: 18px 20px;">
+              <div style="display: flex; gap: 20px; margin-bottom: 16px;">
+                <div>
+                  <div style="font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px;">フィッシングスコア</div>
+                  <div style="font-family: var(--font-display); font-size: 24px; color: var(--text-primary);">{{ cat.phishing }}<span style="font-size: 14px; color: var(--text-tertiary);">/100</span></div>
+                </div>
+                <div>
+                  <div style="font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px;">AI生成スコア</div>
+                  <div style="font-family: var(--font-display); font-size: 24px; color: var(--text-primary);">{{ cat.aiDisplay }}</div>
+                </div>
+              </div>
+
+              <div style="font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px;">判定根拠</div>
+              <sc-for list="{{ cat.reasons }}" as="reason" hint-placeholder-count="3">
+                <div style="font-size: 12.5px; color: var(--text-secondary); padding: 6px 0; border-top: 1px solid var(--border-default); display: flex; gap: 6px;">
+                  <i class="fa-solid fa-minus" style="font-size: 8px; margin-top: 5px; color: var(--text-tertiary);"></i>
+                  <span>{{ reason }}</span>
+                </div>
+              </sc-for>
+
+              <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-default); font-size: 12px; color: var(--text-tertiary);">
+                <sc-if value="{{ quotaUsed }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; align-items:center; gap:6px;"><i class="fa-regular fa-clock"></i> 本日のAI詳細判定は利用済みです</div>
+                </sc-if>
+                <sc-if value="{{ quotaAvailable }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-robot"></i> AI詳細判定 本日残り1回</div>
+                </sc-if>
+              </div>
+
+              <div style="display: flex; gap: 8px; margin-top: 16px;">
+                <button onClick="{{ giveFeedback_agree }}" style="flex: 1; background: {{ agreeBg }}; color: {{ agreeColor }}; border: 1px solid var(--color-ink-900); padding: 8px 0; font-size: 12.5px; letter-spacing: 0.03em; cursor: pointer;">同意する</button>
+                <button onClick="{{ giveFeedback_dispute }}" style="flex: 1; background: {{ disputeBg }}; color: {{ disputeColor }}; border: 1px solid var(--border-default); padding: 8px 0; font-size: 12.5px; letter-spacing: 0.03em; cursor: pointer;">異議あり</button>
+              </div>
+              <sc-if value="{{ feedbackGiven }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top: 10px; font-size: 12px; color: var(--text-tertiary); display:flex; align-items:center; gap:6px;"><span>✦</span> フィードバックを送信しました</div>
+              </sc-if>
+            </div>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 10px; padding-bottom: 28px;">
+    <div style="font-size: 12px; color: var(--text-tertiary); letter-spacing: 0.04em; align-self: center; margin-right: 4px;">判定デモ:</div>
+    <button onClick="{{ setCategory_danger }}" style="background: {{ dangerSelBg }}; color: {{ dangerSelColor }}; border: 1px solid var(--color-ink-900); padding: 6px 16px; font-size: 12px; cursor: pointer;">危険</button>
+    <button onClick="{{ setCategory_caution }}" style="background: {{ cautionSelBg }}; color: {{ cautionSelColor }}; border: 1px solid var(--color-ink-900); padding: 6px 16px; font-size: 12px; cursor: pointer;">注意</button>
+    <button onClick="{{ setCategory_safe }}" style="background: {{ safeSelBg }}; color: {{ safeSelColor }}; border: 1px solid var(--color-ink-900); padding: 6px 16px; font-size: 12px; cursor: pointer;">安全</button>
+    <button onClick="{{ toggleQuota }}" style="background: transparent; color: var(--text-secondary); border: 1px solid var(--border-default); padding: 6px 16px; font-size: 12px; cursor: pointer; margin-left: 10px;">AI枠消費/利用可 切替</button>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
+  <div style="flex: 1; display: flex; justify-content: center; padding: 40px 28px;">
+    <div style="width: 100%; max-width: 1080px;">
+
+      <div style="margin-bottom: 32px;">
+        <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px;">Dashboard</div>
+        <div style="font-family: var(--font-display); font-size: 30px; color: var(--text-primary);">判定履歴 &amp; KPI</div>
+      </div>
+
+      <div style="display: flex; border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default); margin-bottom: 40px;">
+        <div style="flex: 1; border-right: 1px solid var(--border-default); padding: 24px 0; text-align: center;">
+          <div style="font-family: var(--font-display); font-size: 36px; color: var(--text-primary);">128</div>
+          <div style="font-size: 12px; letter-spacing: 0.04em; color: var(--text-tertiary); margin-top: 6px;">判定実行数</div>
+        </div>
+        <div style="flex: 1; border-right: 1px solid var(--border-default); padding: 24px 0; text-align: center;">
+          <div style="font-family: var(--font-display); font-size: 36px; color: var(--text-primary);">62%</div>
+          <div style="font-size: 12px; letter-spacing: 0.04em; color: var(--text-tertiary); margin-top: 6px;">AI枠消費率</div>
+        </div>
+        <div style="flex: 1; padding: 24px 0; text-align: center;">
+          <div style="font-family: var(--font-display); font-size: 36px; color: var(--text-primary);">34%</div>
+          <div style="font-size: 12px; letter-spacing: 0.04em; color: var(--text-tertiary); margin-top: 6px;">フィードバック率</div>
+        </div>
+      </div>
+
+      <div style="border: 1px solid var(--border-default); background: #fff;">
+        <div style="display: grid; grid-template-columns: 160px 90px 110px 110px 100px 1fr; padding: 12px 20px; background: var(--surface-subtle); border-bottom: 1px solid var(--border-default); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-tertiary);">
+          <div>日時</div><div>区分</div><div>フィッシング</div><div>AI生成</div><div>枠利用</div><div>フィードバック</div>
+        </div>
+        <sc-for list="{{ history }}" as="row" hint-placeholder-count="6">
+          <div style="display: grid; grid-template-columns: 160px 90px 110px 110px 100px 1fr; padding: 14px 20px; border-bottom: 1px solid var(--border-default); align-items: center; font-size: 13px; color: var(--text-primary);">
+            <div>{{ row.date }}</div>
+            <div>
+              <span style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 9px; background: {{ row.badgeBg }}; color: {{ row.badgeColor }}; border: {{ row.badgeBorder }};">{{ row.label }}</span>
+            </div>
+            <div>{{ row.phishing }}</div>
+            <div>{{ row.aiDisplay }}</div>
+            <div>{{ row.quotaLabel }}</div>
+            <div style="color: var(--text-secondary);">{{ row.feedback }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top: 20px; font-size: 12px; color: var(--text-tertiary);">本文・件名・送信元アドレスは保存されません。履歴にはスコア・区分・根拠コード・本文ハッシュのみ保持されます。</div>
+    </div>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    tab: 'extension',
+    category: 'danger',
+    quotaUsed: false,
+    feedbackGiven: false,
+    judged: false,
+  };
+
+  CATEGORIES = {
+    danger: {
+      label: '危険', icon: 'fa-triangle-exclamation',
+      headerBg: 'var(--color-ink-900)', headerColor: '#fff',
+      phishing: 78, aiDisplay: '65 / 100',
+      reasons: [
+        '送信者表示名がブランドマスタに一致するが送信ドメイン不一致 (+25)',
+        '緊急性キーワード3件該当 (+15、上限+20)',
+        '認証情報の入力要求表現を検出 (+20)',
+        'SPF/DKIM/DMARCのいずれかがfail (+30)',
+      ],
+    },
+    caution: {
+      label: '注意', icon: 'fa-circle-exclamation',
+      headerBg: 'var(--surface-subtle)', headerColor: 'var(--text-primary)',
+      phishing: 42, aiDisplay: '判定不能',
+      reasons: [
+        '短縮URLドメインマスタに該当 (+10)',
+        '緊急性キーワード1件該当 (+5)',
+        '本文が200文字未満のためAI生成スコアは判定不能',
+      ],
+    },
+    safe: {
+      label: '安全', icon: 'fa-circle-check',
+      headerBg: 'var(--surface-subtle)', headerColor: 'var(--text-primary)',
+      phishing: 8, aiDisplay: '20 / 100',
+      reasons: [
+        'SPF/DKIM/DMARCすべてpass (−30)',
+        '表示テキストとhrefのドメイン不一致なし',
+        '緊急性キーワード該当なし',
+      ],
+    },
+  };
+
+  HISTORY = [
+    { date: '2026-07-22 09:14', key: 'danger', phishing: 78, aiDisplay: '65', quotaLabel: '使用', feedback: '異議' },
+    { date: '2026-07-21 18:02', key: 'safe', phishing: 6, aiDisplay: '12', quotaLabel: '未使用', feedback: '—' },
+    { date: '2026-07-21 11:47', key: 'caution', phishing: 38, aiDisplay: '判定不能', quotaLabel: '未使用', feedback: '同意' },
+    { date: '2026-07-20 15:30', key: 'danger', phishing: 82, aiDisplay: '71', quotaLabel: '使用', feedback: '同意' },
+    { date: '2026-07-19 08:55', key: 'safe', phishing: 4, aiDisplay: '9', quotaLabel: '未使用', feedback: '—' },
+    { date: '2026-07-18 20:11', key: 'caution', phishing: 45, aiDisplay: '58', quotaLabel: '使用', feedback: '—' },
+  ];
+
+  BADGE_STYLE = {
+    danger: { bg: 'var(--color-ink-900)', color: '#fff', border: '1px solid var(--color-ink-900)' },
+    caution: { bg: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--color-ink-900)' },
+    safe: { bg: 'var(--surface-subtle)', color: 'var(--text-secondary)', border: '1px solid var(--border-default)' },
+  };
+
+  renderVals() {
+    const cat = this.CATEGORIES[this.state.category];
+    const sel = (key) => ({
+      bg: this.state.category === key ? 'var(--color-ink-900)' : 'transparent',
+      color: this.state.category === key ? '#fff' : 'var(--text-primary)',
+    });
+    const d = sel('danger'), c = sel('caution'), s = sel('safe');
+
+    const history = this.HISTORY.map(row => {
+      const b = this.BADGE_STYLE[row.key];
+      const label = this.CATEGORIES[row.key].label;
+      return { ...row, label, badgeBg: b.bg, badgeColor: b.color, badgeBorder: b.border };
+    });
+
+    return {
+      isExtension: this.state.tab === 'extension',
+      isDashboard: this.state.tab === 'dashboard',
+      setTab_extension: () => this.setState({ tab: 'extension' }),
+      setTab_dashboard: () => this.setState({ tab: 'dashboard' }),
+      judged: this.state.judged,
+      judgeBtnLabel: this.state.judged ? '再判定する' : '判定する',
+      judgeBtnIcon: this.state.judged ? 'fa-arrows-rotate' : 'fa-magnifying-glass',
+      runJudgement: () => this.setState({ judged: true, feedbackGiven: false }),
+      closeJudgement: () => this.setState({ judged: false, feedbackGiven: false }),
+      extTabBg: this.state.tab === 'extension' ? 'rgba(255,255,255,.18)' : 'transparent',
+      dashTabBg: this.state.tab === 'dashboard' ? 'rgba(255,255,255,.18)' : 'transparent',
+
+      mailList: [
+        { from: 'security-support@amaz0n-verify.com', time: '09:14', subject: '【重要】アカウントの確認が必要です', snippet: 'お客様のアカウントで不審なログインが検出されました…', bg: 'var(--surface-subtle)' },
+        { from: '経理部', time: '昨日', subject: '7月分交通費精算のお願い', snippet: '月末までに精算システムへの入力をお願いします', bg: 'transparent' },
+        { from: 'ニュースレター', time: '昨日', subject: '今週のおすすめ記事', snippet: '今週注目のトピックをまとめました', bg: 'transparent' },
+        { from: '人事部', time: '7/20', subject: '健康診断のご案内', snippet: '対象者は下記日程よりご予約ください', bg: 'transparent' },
+      ],
+
+      cat,
+      quotaUsed: this.state.quotaUsed,
+      quotaAvailable: !this.state.quotaUsed,
+      toggleQuota: () => this.setState(s => ({ quotaUsed: !s.quotaUsed })),
+
+      setCategory_danger: () => this.setState({ category: 'danger', feedbackGiven: false, judged: true }),
+      setCategory_caution: () => this.setState({ category: 'caution', feedbackGiven: false, judged: true }),
+      setCategory_safe: () => this.setState({ category: 'safe', feedbackGiven: false, judged: true }),
+      dangerSelBg: d.bg, dangerSelColor: d.color,
+      cautionSelBg: c.bg, cautionSelColor: c.color,
+      safeSelBg: s.bg, safeSelColor: s.color,
+
+      feedbackGiven: this.state.feedbackGiven,
+      giveFeedback_agree: () => this.setState({ feedbackGiven: true }),
+      giveFeedback_dispute: () => this.setState({ feedbackGiven: true }),
+      agreeBg: 'var(--color-ink-900)', agreeColor: '#fff',
+      disputeBg: 'transparent', disputeColor: 'var(--text-primary)',
+
+      history,
+    };
+  }
+}
+</script>
+</body>
+</html>

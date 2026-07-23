@@ -1,0 +1,7 @@
+/* Veliora Design System — Global Entry Point
+   Consumers: link this one file to get everything.
+   This file contains @import rules only.
+*/
+@import './tokens/typography.css';
+@import './tokens/colors.css';
+@import './tokens/spacing.css';

@@ -1,0 +1,35 @@
+/* Veliora — Typography Tokens */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+:root {
+  /* ── Font families ────────────────────────────── */
+  --font-display:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:     'Source Sans 3', system-ui, -apple-system, sans-serif;
+
+  /* ── Weights ──────────────────────────────────── */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ── Size scale (rem) ─────────────────────────── */
+  --text-2xs:  0.78rem;   /* 12.5px — footer fine print */
+  --text-xs:   0.82rem;   /* 13px   — footer links, captions */
+  --text-sm:   0.88rem;   /* 14px   — card body, nav links */
+  --text-base: 0.93rem;   /* 15px   — section body copy */
+  --text-md:   1rem;      /* 16px   — step labels, card headings */
+  --text-lg:   1.1rem;    /* 17.6px — nav brand name, large body */
+  --text-xl:   1.5rem;    /* 24px   — about h2 */
+  --text-2xl:  1.7rem;    /* 27px   — section titles */
+  --text-3xl:  2.8rem;    /* 45px   — stat numbers, hero h1 (max) */
+
+  /* ── Leading ──────────────────────────────────── */
+  --leading-tight:   1.2;
+  --leading-normal:  1.65;
+  --leading-relaxed: 1.75;
+
+  /* ── Tracking ─────────────────────────────────── */
+  --tracking-none:   0;
+  --tracking-wide:   0.04em;
+  --tracking-wider:  0.06em;
+}
