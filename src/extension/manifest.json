@@ -5,6 +5,10 @@
   "description": "Webメール上でフィッシング/AI生成メールの可能性を判定します(MVP)",
   "permissions": ["identity", "storage"],
   "host_permissions": ["https://mail.google.com/*"],
+  "oauth2": {
+    "client_id": "REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID.apps.googleusercontent.com",
+    "scopes": ["openid"]
+  },
   "background": {
     "service_worker": "dist/background.js",
     "type": "module"
