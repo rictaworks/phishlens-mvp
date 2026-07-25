@@ -1,0 +1,5 @@
+[
+  { "code": "agree", "label": "同意" },
+  { "code": "dispute", "label": "異議" },
+  { "code": "unknown", "label": "不明" }
+]
