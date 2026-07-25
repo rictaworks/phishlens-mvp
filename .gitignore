@@ -1,0 +1,9 @@
+/.claude/
+.env
+CLIENT/
+DEBUG/
+DELETE/
+ENV/
+TASKS/
+WORK/
+app-ui/
