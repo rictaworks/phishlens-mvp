@@ -12,3 +12,11 @@ WORK/
 app-ui/
 
 /.claude/
+
+# ビルド成果物・依存パッケージ(src/配下の各コンポーネント共通)
+node_modules/
+dist/
+.next/
+coverage/
+*.log
+

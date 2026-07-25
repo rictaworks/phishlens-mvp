@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  extension:
+    name: extension (Jest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: src/extension/package-lock.json
+      - working-directory: src/extension
+        run: npm ci
+      - working-directory: src/extension
+        run: npm test -- --ci
+
+  dashboard:
+    name: dashboard (Jest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: src/dashboard/package-lock.json
+      - working-directory: src/dashboard
+        run: npm ci
+      - working-directory: src/dashboard
+        run: npm test -- --ci
+
+  api:
+    name: api (RSpec)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+          working-directory: src/api
+      - working-directory: src/api
+        env:
+          RAILS_ENV: test
+        run: bin/rails db:prepare
+      - working-directory: src/api
+        run: bundle exec rspec
+
+  ai-service:
+    name: ai-service (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - working-directory: src/ai-service
+        run: pip install -r requirements-dev.txt
+      - working-directory: src/ai-service
+        run: pytest -q
