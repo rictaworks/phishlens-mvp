@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.describe Feedback, type: :model do
   let(:user) { User.create!(google_sub: "sub-1", created_at: Time.current) }
-  let(:category) { JudgementCategory.create!(code: "danger", label: "危険", threshold_min: 60) }
-  let(:feedback_category) { FeedbackCategory.create!(code: "agree", label: "同意") }
+  let(:category) do
+    JudgementCategory.find_or_create_by!(code: "danger") { |c| c.label = "危険"; c.threshold_min = 60 }
+  end
+  let(:feedback_category) { FeedbackCategory.find_or_create_by!(code: "agree") { |c| c.label = "同意" } }
   let(:judgement) do
     Judgement.create!(
       google_sub: user.google_sub,
