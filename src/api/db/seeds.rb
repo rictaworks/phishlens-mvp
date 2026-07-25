@@ -1,9 +1,39 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# マスタデータはsrc/extension/config/masters/配下のJSONを正とし、
+# Rails側でも同じ内容を読み込んでシードする(#2で作成した唯一の情報源)。
+
+require "json"
+
+masters_dir = Rails.root.join("..", "extension", "config", "masters")
+load_master = lambda { |filename| JSON.parse(File.read(masters_dir.join(filename))) }
+
+load_master.call("urgency-keywords.json").each do |row|
+  UrgencyKeyword.find_or_create_by!(keyword: row["keyword"], lang: row["lang"])
+end
+
+load_master.call("brand-domains.json").each do |row|
+  BrandDomain.find_or_create_by!(brand_name: row["brand_name"], official_domain: row["official_domain"])
+end
+
+load_master.call("shortener-domains.json").each do |row|
+  ShortenerDomain.find_or_create_by!(domain: row["domain"])
+end
+
+load_master.call("ai-style-patterns.json").each do |row|
+  AiStylePattern.find_or_create_by!(pattern_code: row["pattern_code"]) do |pattern|
+    pattern.description = row["description"]
+    pattern.weight = row["weight"]
+  end
+end
+
+load_master.call("judgement-categories.json").each do |row|
+  JudgementCategory.find_or_create_by!(code: row["code"]) do |category|
+    category.label = row["label"]
+    category.threshold_min = row["threshold_min"]
+  end
+end
+
+load_master.call("feedback-categories.json").each do |row|
+  FeedbackCategory.find_or_create_by!(code: row["code"]) do |category|
+    category.label = row["label"]
+  end
+end

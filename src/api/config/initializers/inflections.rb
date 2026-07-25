@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+
+# デフォルトの /([ti])a$/ ルールにより "quota" は複数形でも無変化と誤判定される
+# (datum/data, criterion/criteria と同じパターンに一致するため)。
+# AiQuotaモデルがテーブル ai_quotas を正しく参照できるよう明示的に指定する。
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.irregular "quota", "quotas"
+end
