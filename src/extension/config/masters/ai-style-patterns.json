@@ -1,0 +1,22 @@
+[
+  { "id": 1, "pattern_code": "low_sentence_length_variance", "description": "文長の分散が極端に小さい", "weight": 15 },
+  { "id": 2, "pattern_code": "overly_polite_boilerplate", "description": "完璧すぎる定型敬語表現", "weight": 15 },
+  { "id": 3, "pattern_code": "generic_lacking_specifics", "description": "具体的固有情報を欠く汎用的な表現", "weight": 15 },
+  { "id": 4, "pattern_code": "zero_typo_template_structure", "description": "誤字ゼロかつテンプレ的な段落構造", "weight": 10 },
+  { "id": 5, "pattern_code": "absence_of_translation_awkwardness", "description": "翻訳調の不自然さの不在", "weight": 10 },
+  { "id": 6, "pattern_code": "no_exclamation_marks", "description": "感嘆符が一切使用されていない", "weight": 10 },
+  { "id": 7, "pattern_code": "lacking_first_person", "description": "一人称表現の欠如", "weight": 10 },
+  { "id": 8, "pattern_code": "vague_dates_amounts", "description": "具体的な日付・金額の欠如", "weight": 15 },
+  { "id": 9, "pattern_code": "excessive_apology_phrases", "description": "過度に丁寧な謝罪表現の多用", "weight": 10 },
+  { "id": 10, "pattern_code": "excessive_bullet_points", "description": "箇条書きの多用", "weight": 10 },
+  { "id": 11, "pattern_code": "repeated_conjunctions", "description": "同一接続詞の反復使用", "weight": 10 },
+  { "id": 12, "pattern_code": "generic_greeting", "description": "一般的すぎる挨拶文", "weight": 10 },
+  { "id": 13, "pattern_code": "no_personal_name", "description": "「お客様」等の総称のみで個人名の記載がない", "weight": 15 },
+  { "id": 14, "pattern_code": "uniform_sentence_endings", "description": "文末表現が均一で単調", "weight": 10 },
+  { "id": 15, "pattern_code": "no_rhetorical_questions", "description": "修辞疑問文が一切ない", "weight": 10 },
+  { "id": 16, "pattern_code": "no_specific_contact_person", "description": "具体的な担当者名の欠如", "weight": 15 },
+  { "id": 17, "pattern_code": "overly_structured_headings", "description": "過度に構造化された見出し構成", "weight": 10 },
+  { "id": 18, "pattern_code": "flat_emotional_tone", "description": "感情表現が平板", "weight": 10 },
+  { "id": 19, "pattern_code": "redundant_preamble", "description": "冗長な前置き文", "weight": 10 },
+  { "id": 20, "pattern_code": "vague_call_to_action", "description": "曖昧な行動喚起表現", "weight": 15 }
+]
