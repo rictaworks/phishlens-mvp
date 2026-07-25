@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :judgements, only: [ :create ]
+    resources :feedbacks, only: [ :create ]
   end
 
   # Defines the root path route ("/")

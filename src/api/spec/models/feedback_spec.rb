@@ -27,6 +27,16 @@ RSpec.describe Feedback, type: :model do
     expect(feedback).to be_valid
   end
 
+  it "feedback_codeがagree/dispute/unknown以外なら無効" do
+    feedback = Feedback.new(
+      judgement: judgement,
+      google_sub: user.google_sub,
+      feedback_code: "invalid",
+      created_at: Time.current,
+    )
+    expect(feedback).not_to be_valid
+  end
+
   it "judgement・user・feedback_categoryに属する" do
     feedback = Feedback.create!(
       judgement: judgement,
