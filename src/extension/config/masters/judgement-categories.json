@@ -1,5 +1,5 @@
 [
-  { "code": "danger", "label": "危険", "threshold_min": 60 },
-  { "code": "caution", "label": "注意", "threshold_min": 30 },
-  { "code": "safe", "label": "安全", "threshold_min": 0 }
+  { "code": "danger", "label": "危険", "threshold_min": 60, "icon": "fa-triangle-exclamation" },
+  { "code": "caution", "label": "注意", "threshold_min": 30, "icon": "fa-circle-exclamation" },
+  { "code": "safe", "label": "安全", "threshold_min": 0, "icon": "fa-circle-check" }
 ]

@@ -26,6 +26,7 @@ export interface JudgementCategory {
   code: 'danger' | 'caution' | 'safe';
   label: string;
   threshold_min: number;
+  icon: string;
 }
 
 export interface FeedbackCategory {
