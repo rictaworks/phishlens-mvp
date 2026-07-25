@@ -4,7 +4,7 @@
   "private": true,
   "description": "PhishLens MVP Chrome拡張(Manifest V3/TypeScript)",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/copy-assets.js",
     "test": "jest",
     "lint": "eslint src test --ext .ts"
   },
@@ -18,5 +18,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "ts-jest": "^29.2.2",
     "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1"
   }
 }

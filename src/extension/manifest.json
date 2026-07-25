@@ -18,5 +18,11 @@
   ],
   "action": {
     "default_title": "PhishLens"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["dist/vendor/fontawesome/css/all.min.css", "dist/vendor/fontawesome/webfonts/*"],
+      "matches": ["https://mail.google.com/*"]
+    }
+  ]
 }
