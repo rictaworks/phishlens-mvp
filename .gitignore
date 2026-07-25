@@ -1,5 +1,8 @@
-/.claude/
+# シークレット(CLAUDE.md シークレット管理 参照)
 .env
+config/master.key
+
+# ローカル運用ディレクトリ(CLAUDE.md ドキュメント構成 参照。SPEC/のみgit管理下)
 CLIENT/
 DEBUG/
 DELETE/
@@ -7,3 +10,5 @@ ENV/
 TASKS/
 WORK/
 app-ui/
+
+/.claude/
