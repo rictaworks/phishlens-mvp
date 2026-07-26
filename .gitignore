@@ -22,4 +22,5 @@ dist/
 coverage/
 *.log
 next-env.d.ts
+*.tsbuildinfo
 

@@ -18,6 +18,8 @@ export const sampleHistory: JudgementHistoryRow[] = [
     aiGenScore: 65,
     quotaUsed: true,
     feedbackLabel: '異議',
+    bodySha256: '0'.repeat(64),
+    reasons: [{ code: 'AUTH_HEADERS_ANY_FAIL', delta: 30 }],
   },
   {
     id: '2',
@@ -28,6 +30,8 @@ export const sampleHistory: JudgementHistoryRow[] = [
     aiGenScore: 12,
     quotaUsed: false,
     feedbackLabel: '—',
+    bodySha256: '1'.repeat(64),
+    reasons: [],
   },
   {
     id: '3',
@@ -38,6 +42,8 @@ export const sampleHistory: JudgementHistoryRow[] = [
     aiGenScore: null,
     quotaUsed: false,
     feedbackLabel: '同意',
+    bodySha256: '2'.repeat(64),
+    reasons: [],
   },
   {
     id: '4',
@@ -48,6 +54,8 @@ export const sampleHistory: JudgementHistoryRow[] = [
     aiGenScore: 71,
     quotaUsed: true,
     feedbackLabel: '同意',
+    bodySha256: '3'.repeat(64),
+    reasons: [{ code: 'URGENCY_KEYWORD_MATCH', delta: 15 }],
   },
   {
     id: '5',
@@ -58,6 +66,8 @@ export const sampleHistory: JudgementHistoryRow[] = [
     aiGenScore: 9,
     quotaUsed: false,
     feedbackLabel: '—',
+    bodySha256: '4'.repeat(64),
+    reasons: [],
   },
   {
     id: '6',
@@ -68,5 +78,7 @@ export const sampleHistory: JudgementHistoryRow[] = [
     aiGenScore: 58,
     quotaUsed: true,
     feedbackLabel: '—',
+    bodySha256: '5'.repeat(64),
+    reasons: [],
   },
 ];
