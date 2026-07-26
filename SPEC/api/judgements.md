@@ -28,6 +28,7 @@
 
 ```json
 {
+  "id": 42,
   "category_code": "danger",
   "category_label": "危険",
   "phishing_score": 78,

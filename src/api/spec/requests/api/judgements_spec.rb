@@ -46,6 +46,7 @@ RSpec.describe "Api::Judgements", type: :request do
       judgement = Judgement.last
       expect(judgement.google_sub).to eq("google-sub-1")
       expect(judgement.body_sha256).to eq(Digest::SHA256.hexdigest(valid_params[:body]))
+      expect(body["id"]).to eq(judgement.id)
     end
 
     it "本文を保存しない(DBに本文カラムが存在しない)" do

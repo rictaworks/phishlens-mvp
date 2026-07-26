@@ -37,6 +37,7 @@ module Api
       )
 
       render json: {
+        id: judgement.id,
         category_code: category.code,
         category_label: category.label,
         phishing_score: judgement.phishing_score,
