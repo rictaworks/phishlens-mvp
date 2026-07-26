@@ -3,7 +3,7 @@ require "json"
 # src/extension/src/scoring/pattern-detectors.ts のRuby移植版。
 module RuleBased
   module PatternDetectors
-    PHRASE_LISTS_PATH = Rails.root.join("..", "extension", "config", "ai-style-phrase-lists.json")
+    PHRASE_LISTS_PATH = Rails.root.join("config", "ai-style-phrase-lists.json")
     PHRASE_LISTS = JSON.parse(File.read(PHRASE_LISTS_PATH)).freeze
 
     NAME_LIKE_PATTERN = /[一-龠ァ-ヴー]{2,4}様/
