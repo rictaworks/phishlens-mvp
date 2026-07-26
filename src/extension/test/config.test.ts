@@ -5,9 +5,9 @@ describe('config', () => {
     expect(API_BASE_URL).toBe('https://api-production-b0e7.up.railway.app');
   });
 
-  it('RECAPTCHA_SITE_KEYが未設定(プレースホルダ)の間はisRecaptchaConfiguredがfalseを返す', () => {
-    expect(RECAPTCHA_SITE_KEY.startsWith('REPLACE_WITH_')).toBe(true);
-    expect(isRecaptchaConfigured()).toBe(false);
+  it('RECAPTCHA_SITE_KEYが設定済みの場合isRecaptchaConfiguredがtrueを返す', () => {
+    expect(RECAPTCHA_SITE_KEY.startsWith('REPLACE_WITH_')).toBe(false);
+    expect(isRecaptchaConfigured()).toBe(true);
   });
 
   it('RecaptchaNotConfiguredErrorは設定手順を示すメッセージを持つ', () => {
