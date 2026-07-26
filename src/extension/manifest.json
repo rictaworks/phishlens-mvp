@@ -11,13 +11,12 @@
     "scopes": ["openid"]
   },
   "background": {
-    "service_worker": "dist/src/background.js",
-    "type": "module"
+    "service_worker": "dist/background.js"
   },
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],
-      "js": ["dist/src/content.js"],
+      "js": ["dist/content.js"],
       "run_at": "document_idle"
     }
   ],
