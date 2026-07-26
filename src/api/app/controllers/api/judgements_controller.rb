@@ -4,7 +4,21 @@ module Api
   class JudgementsController < ApplicationController
     include Authenticatable
 
+    HISTORY_LIMIT = 100
+
     rescue_from ActionController::ParameterMissing, with: :render_bad_request
+
+    def index
+      judgements = JudgementRepository.new.history_by_sub(current_google_sub)
+                                       .includes(:judgement_category, :judgement_reasons, :feedbacks)
+                                       .limit(HISTORY_LIMIT)
+
+      render json: { judgements: judgements.map { |judgement| serialize_history_row(judgement) } }, status: :ok
+    end
+
+    def kpis
+      render json: DashboardKpiCalculator.new(current_google_sub).call, status: :ok
+    end
 
     def create
       google_sub = current_google_sub
@@ -50,6 +64,23 @@ module Api
     end
 
     private
+
+    def serialize_history_row(judgement)
+      latest_feedback = judgement.feedbacks.max_by(&:created_at)
+
+      {
+        id: judgement.id,
+        judged_at: judgement.judged_at,
+        category_code: judgement.category_code,
+        category_label: judgement.judgement_category.label,
+        phishing_score: judgement.phishing_score,
+        ai_gen_score: judgement.ai_gen_score,
+        ai_detail_used: judgement.ai_detail_used,
+        feedback_label: latest_feedback&.feedback_category&.label,
+        body_sha256: judgement.body_sha256,
+        reasons: judgement.judgement_reasons.map { |reason| { code: reason.reason_code, delta: reason.score_delta } }
+      }
+    end
 
     def run_ai_detail_judge(quota_manager, google_sub, body)
       return [ nil, false ] unless quota_manager.can_use_today?(google_sub)

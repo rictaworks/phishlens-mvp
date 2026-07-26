@@ -12,6 +12,8 @@ const rows: JudgementHistoryRow[] = [
     aiGenScore: 65,
     quotaUsed: true,
     feedbackLabel: '異議',
+    bodySha256: '0'.repeat(64),
+    reasons: [{ code: 'AUTH_HEADERS_ANY_FAIL', delta: 30 }],
   },
   {
     id: '2',
@@ -22,6 +24,8 @@ const rows: JudgementHistoryRow[] = [
     aiGenScore: null,
     quotaUsed: false,
     feedbackLabel: '—',
+    bodySha256: '1'.repeat(64),
+    reasons: [],
   },
 ];
 

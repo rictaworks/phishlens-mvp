@@ -58,6 +58,8 @@ cd src/extension && npm run build
 | API | エンドポイント | 詳細 |
 |---|---|---|
 | 判定API | `POST /api/judgements` (Rails) | [SPEC/api/judgements.md](./SPEC/api/judgements.md) |
+| 判定履歴API | `GET /api/judgements` (Rails) | [SPEC/api/judgements.md](./SPEC/api/judgements.md) |
+| KPI集計API | `GET /api/judgements/kpis` (Rails) | [SPEC/api/judgements.md](./SPEC/api/judgements.md) |
 | フィードバックAPI | `POST /api/feedbacks` (Rails) | [SPEC/api/feedbacks.md](./SPEC/api/feedbacks.md) |
 | 管理API: マスタ管理 | `/admin/masters/:master_type` (Rails) | [SPEC/api/admin-masters.md](./SPEC/api/admin-masters.md) |
 | 管理API: AI枠手動リセット | `POST /admin/quota_resets` (Rails) | [SPEC/api/admin-quota-resets.md](./SPEC/api/admin-quota-resets.md) |
@@ -73,4 +75,15 @@ Googleログイン(chrome.identity経由のOAuth、#14)は実装済みだが、*
 3. Rails側に環境変数 `GOOGLE_OAUTH_CLIENT_ID` を設定する(IDトークン検証用)
 
 上記が未設定の間、拡張は `GoogleAuthNotConfiguredError`、Rails APIは401(`ClientIdNotConfiguredError`)を返す
-(規約によりフォールバックせず明示的エラーとする設計)。ダッシュボード側のGoogleログインは未実装(#11参照)。
+(規約によりフォールバックせず明示的エラーとする設計)。
+
+ダッシュボード(Next.js)側のGoogleログイン(#45)はGoogle Identity Services(GIS)の「Googleでログイン」ボタンを使用する。
+拡張のOAuthクライアント(Chrome拡張タイプ)とは**別に、Webアプリケーションタイプ**のOAuthクライアントIDを発行する必要がある
+(承認済みJavaScriptオリジンに `http://localhost:3000` および本番Vercel URLを登録する)。動作させるには以下の設定が必要:
+
+1. Google Cloud ConsoleでWebアプリケーション用OAuthクライアントIDを発行する
+2. `src/dashboard/.env.local` の `NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID` をプレースホルダ(`REPLACE_WITH_...`)から実際のクライアントIDに差し替える
+3. `src/dashboard/.env.local` の `NEXT_PUBLIC_API_BASE_URL` にRails APIのURL(開発時は `http://localhost:3001`)を設定する
+4. Rails側の `CORS_ALLOWED_ORIGINS` にダッシュボードのオリジンを追加する
+
+上記が未設定の間、ダッシュボードはサインインボタンの代わりに未設定エラーメッセージを表示する(規約によりフォールバックしない)。

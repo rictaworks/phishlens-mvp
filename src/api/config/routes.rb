@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   namespace :api do
-    resources :judgements, only: [ :create ]
+    resources :judgements, only: %i[create index] do
+      collection do
+        get :kpis
+      end
+    end
     resources :feedbacks, only: [ :create ]
   end
 

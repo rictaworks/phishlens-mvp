@@ -17,3 +17,9 @@ export function formatJudgedAt(iso: string): string {
 export function formatAiGenScore(score: number | null): string {
   return score === null ? '判定不能' : String(score);
 }
+
+export const NO_FEEDBACK_LABEL = '—';
+
+export function formatFeedbackLabel(label: string | null): string {
+  return label ?? NO_FEEDBACK_LABEL;
+}
