@@ -1,6 +1,6 @@
 # AI詳細判定API
 
-メール本文を受け取り、LangChain(`ChatAnthropic`, `model=claude-opus-5`)経由でフィッシング意図・
+メール本文を受け取り、LangChain(`ChatGoogleGenerativeAI`, `model=gemini-2.5-flash`)経由でフィッシング意図・
 AI生成らしさ・根拠文を返す。Rails API(`src/api/app/services/ai_detail_judge.rb`)から呼び出される
 内部サービスであり、拡張/ダッシュボードから直接叩くことは想定しない。
 
@@ -31,7 +31,7 @@ AI生成らしさ・根拠文を返す。Rails API(`src/api/app/services/ai_deta
 |---|---|
 | 422 | `body`が空 |
 | 502 | LLM呼び出し失敗(構造化出力の解析失敗を含む) |
-| 503 | `ANTHROPIC_API_KEY`未設定 |
+| 503 | `GOOGLE_API_KEY`未設定 |
 
 本文はログ出力・永続化しない(オンメモリ処理のみ、requirements.md 1.7)。
 

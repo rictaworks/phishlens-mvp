@@ -12,7 +12,7 @@ def _clear_overrides():
 
 
 def test_analyze_returns_503_when_llm_not_configured(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("GOOGLE_API_KEY", raising=False)
     client = TestClient(app)
 
     response = client.post("/analyze", json={"body": "本文です"})
