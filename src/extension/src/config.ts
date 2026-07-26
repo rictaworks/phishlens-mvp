@@ -9,8 +9,9 @@ const PLACEHOLDER_PREFIX = 'REPLACE_WITH_';
 /**
  * reCAPTCHA v3のサイトキー。未設定の間はPLACEHOLDER_PREFIXで始まる値のままにしておく
  * (manifest.jsonのoauth2.client_idと同じ「未設定はプレースホルダ」規約)。
+ * Issue #46: Google reCAPTCHA管理コンソールで登録した本番用サイトキーに設定済み。
  */
-export const RECAPTCHA_SITE_KEY = 'REPLACE_WITH_RECAPTCHA_SITE_KEY';
+export const RECAPTCHA_SITE_KEY = '6LeL6GYtAAAAACPwHrkzvSlShKnphtLNSVgOjx-3';
 
 export function isRecaptchaConfigured(): boolean {
   return !RECAPTCHA_SITE_KEY.startsWith(PLACEHOLDER_PREFIX);
