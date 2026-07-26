@@ -11,9 +11,7 @@ module RuleBased
       end
     end
 
-    CREDENTIAL_REQUEST_PHRASES_PATH = Rails.root.join(
-      "..", "extension", "config", "credential-request-phrases.json",
-    )
+    CREDENTIAL_REQUEST_PHRASES_PATH = Rails.root.join("config", "credential-request-phrases.json")
     CREDENTIAL_REQUEST_PHRASES = JSON.parse(File.read(CREDENTIAL_REQUEST_PHRASES_PATH)).freeze
 
     URGENCY_KEYWORD_POINTS_PER_MATCH = 5

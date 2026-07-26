@@ -1,9 +1,10 @@
 # マスタデータはsrc/extension/config/masters/配下のJSONを正とし、
-# Rails側でも同じ内容を読み込んでシードする(#2で作成した唯一の情報源)。
+# Rails側はsrc/api/config/masters/に複製した同一内容を読み込んでシードする
+# (apiサービス単体デプロイでもsrc/extensionに依存せず起動できるようにするため。#35)。
 
 require "json"
 
-masters_dir = Rails.root.join("..", "extension", "config", "masters")
+masters_dir = Rails.root.join("config", "masters")
 load_master = lambda { |filename| JSON.parse(File.read(masters_dir.join(filename))) }
 
 load_master.call("urgency-keywords.json").each do |row|

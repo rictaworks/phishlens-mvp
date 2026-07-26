@@ -1,6 +1,25 @@
 require "rails_helper"
 
 RSpec.describe RuleBased::PhishingScorer do
+  describe "CREDENTIAL_REQUEST_PHRASES_PATH" do
+    it "Rails.root配下のパスを参照する(Railwayのapi単体デプロイでも解決できるように)" do
+      expect(described_class::CREDENTIAL_REQUEST_PHRASES_PATH.to_s).to start_with(Rails.root.to_s)
+    end
+
+    it "実ファイルが存在する" do
+      expect(File.exist?(described_class::CREDENTIAL_REQUEST_PHRASES_PATH)).to be(true)
+    end
+  end
+
+  describe "CREDENTIAL_REQUEST_PHRASES" do
+    it "src/extension/config/credential-request-phrases.json と内容が一致する(二重管理の同期漏れ検知)" do
+      extension_path = Rails.root.join("..", "extension", "config", "credential-request-phrases.json")
+      extension_phrases = JSON.parse(File.read(extension_path))
+
+      expect(described_class::CREDENTIAL_REQUEST_PHRASES).to eq(extension_phrases)
+    end
+  end
+
   def base_email(overrides = {})
     {
       subject: "定期のお知らせ",
