@@ -1,23 +1,23 @@
-from langchain_anthropic import ChatAnthropic
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 from app.config import (
     DEFAULT_MAX_RETRIES,
     DEFAULT_TIMEOUT_SECONDS,
-    get_anthropic_api_key,
+    get_google_api_key,
     get_model_name,
 )
 
 
 class LlmNotConfiguredError(RuntimeError):
-    """ANTHROPIC_API_KEY未設定時に送出する(規約によりフォールバックしない)。"""
+    """GOOGLE_API_KEY未設定時に送出する(規約によりフォールバックしない)。"""
 
 
-def build_analysis_llm() -> ChatAnthropic:
-    api_key = get_anthropic_api_key()
+def build_analysis_llm() -> ChatGoogleGenerativeAI:
+    api_key = get_google_api_key()
     if not api_key:
-        raise LlmNotConfiguredError("ANTHROPIC_API_KEYが設定されていません")
+        raise LlmNotConfiguredError("GOOGLE_API_KEYが設定されていません")
 
-    return ChatAnthropic(
+    return ChatGoogleGenerativeAI(
         model=get_model_name(),
         api_key=api_key,
         timeout=DEFAULT_TIMEOUT_SECONDS,
