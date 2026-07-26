@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PhishLens",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Webメール上でフィッシング/AI生成メールの可能性を判定します(MVP)",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ga98GTQMHiM3SXXzKgpxSf6rwafFpeV2ZTGvDTE7YRwBT++mWebt2vYWPBf5zaqQ4EPu/YQ50nsKpd9iZzeVwt5HK1nOgHCkFj3c4VKNUYE5GpMl2E5TPjTgZXv9+l/iFBqsAoVOVBVtD5YVXQf/n50rtVrSsQjijxGwxEzKA6mVN2Pkm1KF1y+XFzHq+Xda+ieNhqWOZuK/k91qX2ftVfkgzcmHWH+aYQC6AroTOC78jhuJLz7meeRiD1zdysYl5niVzUqZyN8UiMkkkSi8AjgHBQLbb3Ieyjh+4J3Dg/Z9/6scLlTP+159a9st0Kxa7ei28ZV9oAC0TwAhafInQIDAQAB",
   "permissions": ["identity", "storage"],

@@ -1,6 +1,6 @@
 {
   "name": "phishlens-extension",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "PhishLens MVP Chrome拡張(Manifest V3/TypeScript)",
   "scripts": {
