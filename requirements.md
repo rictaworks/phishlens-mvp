@@ -129,7 +129,7 @@ erDiagram
         datetime created_at
     }
     AI_QUOTAS {
-        string google_sub PK_FK
+        string google_sub PK, FK
         date quota_date "JST基準日"
         int used_count "0または1"
         datetime reset_at "JST03:00自動リセット"
