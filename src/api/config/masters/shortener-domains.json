@@ -1,0 +1,22 @@
+[
+  { "id": 1, "domain": "bit.ly" },
+  { "id": 2, "domain": "tinyurl.com" },
+  { "id": 3, "domain": "goo.gl" },
+  { "id": 4, "domain": "ow.ly" },
+  { "id": 5, "domain": "t.co" },
+  { "id": 6, "domain": "is.gd" },
+  { "id": 7, "domain": "buff.ly" },
+  { "id": 8, "domain": "rebrand.ly" },
+  { "id": 9, "domain": "cutt.ly" },
+  { "id": 10, "domain": "shorte.st" },
+  { "id": 11, "domain": "adf.ly" },
+  { "id": 12, "domain": "bl.ink" },
+  { "id": 13, "domain": "s.id" },
+  { "id": 14, "domain": "lnkd.in" },
+  { "id": 15, "domain": "rb.gy" },
+  { "id": 16, "domain": "t.ly" },
+  { "id": 17, "domain": "tiny.cc" },
+  { "id": 18, "domain": "urlz.fr" },
+  { "id": 19, "domain": "x.co" },
+  { "id": 20, "domain": "v.gd" }
+]

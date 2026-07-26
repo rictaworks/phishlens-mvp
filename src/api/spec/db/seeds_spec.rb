@@ -18,4 +18,18 @@ RSpec.describe "db:seed", type: :model do
 
     expect(UrgencyKeyword.count).to eq(30)
   end
+
+  it "src/api/config/masters と src/extension/config/masters の内容が一致する(二重管理の同期漏れ検知)" do
+    api_masters_dir = Rails.root.join("config", "masters")
+    extension_masters_dir = Rails.root.join("..", "extension", "config", "masters")
+
+    filenames = Dir.glob(api_masters_dir.join("*.json")).map { |path| File.basename(path) }
+    expect(filenames).not_to be_empty
+
+    filenames.each do |filename|
+      api_content = JSON.parse(File.read(api_masters_dir.join(filename)))
+      extension_content = JSON.parse(File.read(extension_masters_dir.join(filename)))
+      expect(api_content).to eq(extension_content), "#{filename} の内容がsrc/apiとsrc/extensionで一致しません"
+    end
+  end
 end
