@@ -1,6 +1,8 @@
 # シークレット(CLAUDE.md シークレット管理 参照)
 .env
 config/master.key
+src/extension/extension-key.pem
+src/extension/extension-key.pub.b64
 
 # ローカル運用ディレクトリ(CLAUDE.md ドキュメント構成 参照。SPEC/のみgit管理下)
 CLIENT/
